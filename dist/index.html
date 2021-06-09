@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+
+</head>
+
+<body>
+    <div id='container'>
+        <div id='search-div'>
+            <input type='text' id='city-input' placeholder='Search for a city'>
+            <button id='search-btn'> Search </button>
+        </div>
+        <div id='cities'></div>
+
+    </div>
+    <script id="city-temp" type="text/x-handlebars-template">
+
+        {{#each cities}}
+        <div class='city' data-name={ {this.name}}>
+            {{#if this.saved}}
+            <button id="delete" data-favourite={{this.saved}}>-</button> {{else}}
+            <button id="save" data-favourite={{this.saved}}>+</button> {{/if}}
+            <div class='city-name'>{{this.name}}</div>
+            <div class='temperature'>{{this.temperature}}&#8451</div>
+            <div class='condition'>
+
+
+                <img class='condition-pic' src="http://openweathermap.org/img/wn/{{conditionPic}}@2x.png">
+                <div class='condition-status'>{{this.condition}}</div>
+            </div>
+
+        </div>
+        {{/each}}
+
+    </script>
+
+    <script src="./jquery/dist/jquery.js"></script>
+    <script src="./handlebars/dist/handlebars.js"></script>
+    <script src="TempManager.js"></script>
+    <script src="Renderer.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
